@@ -267,6 +267,7 @@ Use string interpolation instead of string concatenation:
 ```
 
 Single quoted strings (`''`) are preffered for keys, symbols and identifiers. Double quoted strings (`""`) are used in all other cases, including user messages, paths and templates.
+
 ```coffeescript
 object['key'] = value # Yes
 object["key"] = value # No
