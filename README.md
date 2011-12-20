@@ -446,17 +446,17 @@ calculate = (arg) ->
 calculate = (arg) ->
     # computation of result
     result
-    
-# Yes
-process = (items) ->
-    for item in list
-        item.doSomething()
-    return
 ```
 
 If a function isn't intended to return a result, or the last expression is not the intended result, an empty `return` is required:
  
 ```coffeescript
+# Yes
+process = (items) ->
+    for item in list
+        item.doSomething()
+    return
+    
 # No
 process = (items) ->
     for item in list
