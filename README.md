@@ -81,8 +81,8 @@ UTF-8 is the preferred source file encoding.
 If using a module system (CommonJS Modules, AMD, etc.), `require` statements should be placed on separate lines.
 
 ```coffeescript
-require 'lib/setup'
-Backbone = require 'backbone'
+require('lib/setup')
+Backbone = require('backbone')
 ```
 These statements should be grouped in the following order:
 
@@ -430,7 +430,39 @@ Array.prototype.slice # No
 
 Prefer `@property` over `this.property`.
 
-Avoid `return` only in short lambda functions. Always use `return` where the last expression is not the intended result.
+Ommit `return` only in short lambda functions. In other cases `return` should always be used:
+
+```coffeescript
+_.map(arr, (n) -> n * n ) # Yes
+_.map(arr, (n) -> return n * n ) # No
+
+# Yes
+calculate = (arg) ->
+    # computation of result
+    return result
+    # Yes
+
+# No
+calculate = (arg) ->
+    # computation of result
+    result
+    
+# Yes
+process = (items) ->
+    for item in list
+        item.doSomething()
+    return
+```
+
+If a function isn't intended to return a result, or the last expression is not the intended result, an empty `return` is required:
+ 
+```coffeescript
+# No
+process = (items) ->
+    for item in list
+        item.doSomething()
+
+```
 
 Use splats (`...`) when working with functions that accept variable numbers of arguments:
 
