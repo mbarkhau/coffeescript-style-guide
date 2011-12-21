@@ -280,23 +280,7 @@ confirm('Are you sure you want to launch the rockets?') # No
 <a name="conditionals"/>
 ## Conditionals
 
-Favor `unless` over `if` for negative conditions.
-
-Instead of using `unless...else`, use `if...else`:
-
-```coffeescript
-# Yes
-if true
-    ...
-else
-    ...
-
-# No
-unless false
-    ...
-else
-    ...
-```
+Don't use `unless` for conditionals or `until` in loops.
 
 Multi-line if/else clauses should use indentation:
 
@@ -312,17 +296,36 @@ if true then ...
 else ...
 ```
 
-
-Only use postfix conditionals when leaving a code block:
+Branches in control flow should stay with the indentation level from which they branch. Only use postfix conditionals when this branching remains visible at the indentation level:
 
 ```coffeescript
 # Yes
 break    if finished
-return   unless valid
-continue unless important
+return   if not valid
+continue if not important
+
+# Yes
+if singing
+    mood = greatlyImproved
 
 # No
 mood = greatlyImproved if singing
+```
+
+Conditional assignments, should only be used if there is also an `else` clause. Never prefixed the value of the expression before the conditional:
+
+```coffeescript
+# Yes
+result = if ... then value1 else value2
+if ... 
+    result = value
+
+# No
+result = value if ...
+result = if ... then value
+
+# Big, No No, as it evaluates to `value1(... ? void 0 : value2)`
+result = value1 if ... else value2
 ```
 
 
