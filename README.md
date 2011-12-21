@@ -250,7 +250,8 @@ baz(4) # Yes
 baz 12 # No
 ```
 
-Use only the boolean values `true` and `false` are allowed.
+Use only the boolean values `true` and `false`:
+
 ```coffeescript
 good = true and false # Yes
 bad = yes and no or on and off # No
