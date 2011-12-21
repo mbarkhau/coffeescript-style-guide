@@ -336,7 +336,7 @@ Take advantage of comprehensions whenever possible:
 
 ```coffeescript
 # Yes
-result = (item.name for item in array)
+result = for item in array then item.name
 
 # No
 results = []
@@ -347,7 +347,7 @@ for item in array
 To filter:
 
 ```coffeescript
-result = (item for item in array when item.name is "test")
+result = for item in array when item.name is "test" then item
 ```
 
 Always use braces in object and class declarations:
@@ -360,7 +360,7 @@ object = one: 1, two: 2 # No
 To iterate over the keys and values of objects:
 
 ```coffeescript
-alert("#{key} = #{value}") for key, value of object
+for key, value of object then alert("#{key} = #{value}")
 ```
 
 <a name="#extending_native_objects"/>
