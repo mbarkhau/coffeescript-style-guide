@@ -1,14 +1,19 @@
 # CoffeeScript Style Guide
 
-This guide presents a collection of best-practices and coding conventions for the [CoffeeScript][coffeescript] programming language.
+This guide presents a collection of best-practices and coding conventions for the
+[CoffeeScript][coffeescript] programming language.
 
 This guide is intended to be community-driven, and contributions are highly encouraged.
 
-Please note that this is a work-in-progress: there is much more that can be specified, and some of the guidelines that have been specified may not be deemed to be idiomatic by the community (in which case, these offending guidelines will be modified or removed, as appropriate).
+Please note that this is a work-in-progress: there is much more that can be specified,
+and some of the guidelines that have been specified may not be deemed to be idiomatic
+by the community (in which case, these offending guidelines will be modified or removed,
+as appropriate).
 
 ## Inspiration
 
-The details in this guide have been very heavily inspired by several existing style guides and other resources. In particular:
+The details in this guide have been very heavily inspired by several existing style
+guides and other resources. In particular:
 
 - [PEP-8][pep8]: Style Guide for Python Code
 - Bozhidar Batsov's [Ruby Style Guide][ruby-style-guide]
@@ -59,11 +64,12 @@ Limit all lines to a maximum of 79 characters.
 <a name="blank_lines"/>
 ### Blank Lines
 
-Separate top-level function and class definitions with a single blank line.
+Separate top-level function and class definitions with two blank lines.
 
 Separate method definitions inside of a class with a single blank line.
 
-Use a single blank line within the bodies of methods or functions in cases where this improves readability (e.g., for the purpose of delineating logical sections).
+Use a single blank line within the bodies of methods or functions in cases where this
+improves readability (e.g., for the purpose of delineating logical sections).
 
 <a name="trailing_whitespace"/>
 ### Trailing Whitespace
@@ -78,7 +84,8 @@ UTF-8 is the preferred source file encoding.
 <a name="module_imports"/>
 ## Module Imports
 
-If using a module system (CommonJS Modules, AMD, etc.), `require` statements should be placed on separate lines.
+If using a module system (CommonJS Modules, AMD, etc.), `require` statements
+should be placed on separate lines.
 
 ```coffeescript
 require('lib/setup')
@@ -142,9 +149,12 @@ test: (param = null) -> # No
 <a name="comments"/>
 ## Comments
 
-If modifying code that is described by an existing comment, update the comment such that it accurately reflects the new code. (Ideally, improve the code to obviate the need for the comment, and delete the comment entirely.)
+If modifying code that is described by an existing comment, update the comment such
+that it accurately reflects the new code. (Ideally, improve the code to obviate the need
+for the comment, and delete the comment entirely.)
 
-The first word of the comment should be capitalized, unless the first word is an identifier that begins with a lower-case letter.
+The first word of the comment should be capitalized, unless the first word is an
+identifier that begins with a lower-case letter.
 
 If a comment is short, the period at the end can be omitted.
 
@@ -153,7 +163,8 @@ If a comment is short, the period at the end can be omitted.
 
 Block comments apply to the block of code that follows them.
 
-Each line of a block comment starts with a `#` and a single space, and should be indented at the same level of the code that it describes.
+Each line of a block comment starts with a `#` and a single space, and should be
+indented at the same level of the code that it describes.
 
 Paragraphs inside of block comments are separated by a line containing a single `#`.
 
@@ -173,11 +184,14 @@ stop()
 <a name="inline_comments"/>
 ### Inline Comments
 
-Inline comments are placed on the line immediately above the statement that they are describing. If the inline comment is sufficiently short, it can be placed on the same line as the statement (separated by a single space from the end of the statement).
+Inline comments are placed on the line immediately above the statement that they are
+describing. If the inline comment is sufficiently short, it can be placed on the same
+line as the statement (separated by a single space from the end of the statement).
 
 All inline comments should start with a `#` and a single space.
 
-The use of inline comments should be limited, because their existence is typically a sign of a code smell.
+The use of inline comments should be limited, because their existence is typically
+a sign of a code smell.
 
 Do not use inline comments when they state the obvious:
 
@@ -196,7 +210,8 @@ x = x + 1 # Compensate for border
 <a name="naming_conventions"/>
 ## Naming Conventions
 
-Use `camelCase` (with a leading lowercase character) to name all variables, methods, and object properties.
+Use `camelCase` (with a leading lowercase character) to name all variables, methods,
+and object properties.
 
 Use `CamelCase` (with a leading uppercase character) to name all classes.
 
@@ -208,7 +223,8 @@ For constants, use all uppercase with underscores:
 CONSTANT_LIKE_THIS
 ```
 
-Methods and variables that are intended to be "private" should begin with a leading underscore:
+Methods and variables that are intended to be "private" should begin with a leading
+underscore:
 
 ```coffeescript
 _privateMethod: ->
@@ -219,21 +235,24 @@ _privateMethod: ->
 
 _(These guidelines also apply to the methods of a class.)_
 
-When declaring a function that takes arguments, always use a single space after the closing parenthesis of the arguments list:
+When declaring a function that takes arguments, always use a single space after the
+closing parenthesis of the arguments list:
 
 ```coffeescript
 foo = (arg1, arg2) -> # Yes
 foo = (arg1, arg2)-> # No
 ```
 
-Do not use parentheses when declaring functions that take no arguments:
+Do not use parentheses when declaring procedures (functions that take no arguments):
 
 ```coffeescript
 bar = -> # Yes
 bar = () -> # No
 ```
 
-In cases where method calls are being chained and the code does not fit on a single line, each call should be placed on a separate line and indented by one level, with a leading `.`.
+In cases where method calls are being chained and the code does not fit on a single
+line, each call should be placed on a separate line and indented by one level,
+with a leading `.`.
 
 ```coffeescript
 [1..3]
@@ -267,7 +286,9 @@ Use string interpolation instead of string concatenation:
 "this is an " + adjective + " string" # No
 ```
 
-Single quoted strings (`''`) are preffered for keys, symbols and identifiers. Double quoted strings (`""`) are used in all other cases, including user messages, paths and templates.
+Single quoted strings (`''`) are preffered for keys, symbols and identifiers.
+Double quoted strings (`""`) are used in all other cases, including user messages,
+paths and templates.
 
 ```coffeescript
 object['key'] = value # Yes
@@ -296,7 +317,8 @@ if true then ...
 else ...
 ```
 
-Branches in control flow should stay with the indentation level from which they branch. Only use postfix conditionals when this branching remains visible at the indentation level:
+Branches in control flow should stay with the indentation level from which they branch.
+Only use postfix conditionals when this branching remains visible at the indentation level:
 
 ```coffeescript
 # Yes
@@ -312,7 +334,8 @@ if singing
 mood = greatlyImproved if singing
 ```
 
-Conditional assignments, should only be used if there is also an `else` clause. Never prefixed the value of the expression before the conditional:
+Conditional assignments, should only be used if there is also an `else` clause. Never
+prefixed the value of the expression before the conditional:
 
 ```coffeescript
 # Yes
@@ -350,7 +373,7 @@ To filter:
 result = for item in array when item.name is "test" then item
 ```
 
-Always use braces in object and class declarations:
+Always use braces in object literals and class definitions:
 
 ```coffeescript
 object = { one: 1, two: 2 } # Yes
@@ -378,7 +401,8 @@ Do not suppress exceptions.
 <a name="annotations"/>
 ## Annotations
 
-Use annotations when necessary to describe a specific action that must be taken against the indicated block of code.
+Use annotations when necessary to describe a specific action that must be taken
+against the indicated block of code.
 
 Write the annotation on the line immediately above the code that the annotation is describing.
 
@@ -453,7 +477,8 @@ calculate = (arg) ->
     result
 ```
 
-If a function isn't intended to return a result, or the last expression is not the intended result, an empty `return` is required:
+If a function isn't intended to return a result, or the last expression is not the
+intended result, an empty `return` is absolutly required:
  
 ```coffeescript
 # Yes
@@ -462,7 +487,7 @@ process = (items) ->
         item.doSomething()
     return
     
-# No
+# No (look at the javascript it produces to see why)
 process = (items) ->
     for item in list
         item.doSomething()
